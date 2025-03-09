@@ -28,18 +28,18 @@ const CreatePatient = () => {
     }
 
     const fieldLabels: Record<string, string> = {
-        name: "Nom du patient",
-        branchName: "Nom de la branche",
-        branchAddress: "Adresse de la branche",
-        ailments: "Symptômes",
-        phoneNumber: "Numéro de téléphone",
+        name: "Name",
+        branchName: "Branch Name",
+        branchAddress: "Branch Address",
+        ailments: "Symptoms",
+        phoneNumber: "Phone Number",
     }
 
     return (
         <div className="patient-container">
             <div className="patient-card">
                 <div className="patient-header">
-                    <h1>Créer un patient</h1>
+                    <h1 style={{fontFamily: 'Gambetta'}}>Create Patient</h1>
                 </div>
                 <div className="patient-content">
                     <form onSubmit={handleSubmit}>
@@ -52,13 +52,13 @@ const CreatePatient = () => {
                                     name={field}
                                     value={(formData as any)[field]}
                                     onChange={handleChange}
-                                    placeholder={`Entrez ${fieldLabels[field].toLowerCase()}`}
+                                    placeholder={`Enter ${fieldLabels[field].toLowerCase()}`}
                                 />
                             </div>
                         ))}
 
                         <button type="submit" disabled={loading} className="submit-button">
-                            {loading ? "Création en cours..." : "Créer le patient"}
+                            {loading ? "loading..." : "Create patient"}
                         </button>
 
                         {error && (

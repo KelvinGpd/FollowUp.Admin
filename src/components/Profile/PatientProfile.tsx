@@ -26,8 +26,7 @@ const PatientProfile = () => {
     return (
         <div>
             <div style={styles.headerContainer}>
-                <button style={styles.backButton} onClick={() => navigate('/patients')}>Back to patient list</button>
-                <h1 style={{ textAlign: 'center' }}>Patient Profile</h1>
+                <h1 style={{ alignItems: 'center', fontFamily: 'Gambetta' }}>Patient Profile</h1>
                 <p></p>
             </div>
 
@@ -62,10 +61,8 @@ const styles: { [key: string]: CSSProperties } = {
     headerContainer:{
         width: '100%',
         display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         margin : 20,
+        justifyContent: 'center',
     },
     container: {
         display: 'flex',

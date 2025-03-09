@@ -23,13 +23,13 @@ export default function DataTable() {
     const handleRowClick = (params: any) => {
         if (!users) return;
         const selectedUser = users.find((user: User) => user.uuid === params.row.uuid);
-        navigate(`/patient-profile/${params.row.uuid}`, { state: { user: selectedUser } });
+        navigate(`/profile/${params.row.uuid}`, { state: { user: selectedUser } });
     };
 
     return (
         <div className={"container"}>
             <header>
-                <h1>Pharmacist admin portal</h1>
+                <h1 style={{fontFamily: 'Gambetta'}}>Pharmacist admin portal</h1>
             </header>
             <Paper sx={{ height: 400, width: '100%' }}>
                 <DataGrid
