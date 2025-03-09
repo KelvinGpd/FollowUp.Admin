@@ -1,8 +1,11 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import Paper from '@mui/material/Paper';
-import {DataGrid, GridColDef} from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import useFetchUsers from "../../hooks/useFetchUsers";
 import useFetchMedicationForUser from "../../hooks/useFetchMedication";
+import PrescribeMedication from './PrescribeMedication';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { User } from '../../types/types';
 
 
 const columns: GridColDef[] = [
@@ -15,20 +18,20 @@ const columns: GridColDef[] = [
 
 const paginationModel = { page: 0, pageSize: 5 };
 
-const PatientProfile = () => {
-    const { data: users, loading } = useFetchUsers() || [];
-    const userName = 'Jane Doe';
-    const currUser = users?.find(user => user.name === userName);
 
-    const { data: medications, loading: loadingMeds } = useFetchMedicationForUser(userName) || [];
-    console.log(medications)
+
+const PatientProfile = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { user } = location.state as { user: User };
+
+    const { data: medications, loading: loadingMeds } = useFetchMedicationForUser(user.name) || [];
 
     return (
         <div >
             <div style={styles.headerContainer}>
-
-                <button style={styles.backButton}>Back to patient list</button>
-                <h1 style={{textAlign: 'center', fontFamily: "Gambetta"}}>Patient Profile</h1>
+                <button style={styles.backButton} onClick={() => navigate('/patients')}>Back to patient list</button>
+                <h1 style={{ textAlign: 'center' }}>Patient Profile</h1>
                 <p></p>
             </div>
 
@@ -36,13 +39,13 @@ const PatientProfile = () => {
 
                 <div>
                     <div style={styles.patientCardContainer}>
-                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Name:</span> {currUser?.name} <br></br></p>
-                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Ailments:</span> {currUser?.ailments}<br></br></p>
-                        <p style={styles.patientCardItem}> <span style={{fontWeight:'bold'}}>Phone number:</span>{currUser?.phoneNumber}<br></br>
+                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Name:</span> {user?.name} <br></br></p>
+                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Ailments:</span> {user?.ailments}<br></br></p>
+                        <p style={styles.patientCardItem}> <span style={{fontWeight:'bold'}}>Phone number:</span>{user?.phoneNumber}<br></br>
                         </p>
                         <p style={styles.patientCardItem}><span
-                            style={{fontWeight: 'bold'}}>Branch name:</span> {currUser?.branchName}<br></br></p>
-                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Branch address:</span> {currUser?.branchAddress}<br></br></p>
+                            style={{fontWeight: 'bold'}}>Branch name:</span> {user?.branchName}<br></br></p>
+                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Branch address:</span> {user?.branchAddress}<br></br></p>
 
                     </div>
                 </div>
@@ -60,9 +63,7 @@ const PatientProfile = () => {
                 </div>
             </div>
 
-            <div>
-                <button style={styles.button}>New prescription (??)</button>
-            </div>
+            <PrescribeMedication />
 
         </div>
 
@@ -111,7 +112,6 @@ const styles: { [key: string]: CSSProperties } = {
         color: 'white',
         fontSize: '12px',
         alignSelf: 'flex-start',
-        // marginRight: 400
     },
 
     button:{

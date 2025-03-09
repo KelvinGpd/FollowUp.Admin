@@ -1,26 +1,27 @@
-import "./App.css"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import "./fonts/Gambetta.ttf"
-import "./fonts/Domine-SemiBold.ttf"
-import ConsultPatient from "./pages/ConsultPatient"
-import Layout from "./pages/layout"
-import Profile from "./pages/profile"
-import AddPatient from "./pages/AddPatient"
-import NoPage from "./pages/NoPage"
+import './App.css';
+import CreatePatient from './components/Create/CreatePatient';
+import PatientList from './components/List/PatientList';
+import PrescribeMedication from './components/Profile/PrescribeMedication';
+import PatientProfile from "./components/Profile/PatientProfile";
+import {Route, BrowserRouter as Router, Routes, Navigate} from "react-router-dom";
+import Navbar from "./components/SideBar/NavBar";
+
+import './fonts/Gambetta.ttf'
+import './fonts/Domine-SemiBold.ttf'
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route path="consult" element={<ConsultPatient />} />
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="patient" element={<AddPatient />} />
-                    <Route path="*" element={<NoPage />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    )
+  return (
+      <div className="App">
+          <Navbar />
+          <PatientList />
+          {/*<Routes>*/}
+          {/*    <Route path='/'  element={<App />} />*/}
+          {/*    <Route path='/reports' element={<PatientList />} />*/}
+          {/*    <Route path='/products' element={<CreatePatient />} />*/}
+          {/*    <Route path='/products' element={<PatientProfile />} />*/}
+          {/*</Routes>*/}
+      </div>
+);
 }
 
 export default App
