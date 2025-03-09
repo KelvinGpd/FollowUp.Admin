@@ -8,7 +8,7 @@ const useFetchUsers = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/data/users/all');
+                const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/users/all`);
                 const result = await response.json();
                 setData(result);
             } catch (error) {

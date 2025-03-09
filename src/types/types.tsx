@@ -15,7 +15,7 @@ export interface Medication {
     prescriptionDate: string;
     expDate: string;
     interval: string;
-    amount: number;
-    dosage: number;
+    amount: string;
+    dosage: string;
     lastTakenDate: string;
 }

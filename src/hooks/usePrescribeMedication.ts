@@ -5,12 +5,12 @@ const usePrescribeMedication = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const prescribeMedication = async (medication: Omit<Medication, 'uuid'>) => {
+    const prescribeMedication = async (medication: Omit<Medication, 'uuid' | 'lastTakenDate'>) => {
         setLoading(true);
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:3000/data/prescriptions', {
+            const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/prescriptions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
