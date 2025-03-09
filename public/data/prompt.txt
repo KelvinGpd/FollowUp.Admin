@@ -4,9 +4,9 @@ I will provide an text of a prescription written by a doctor that contains a pre
 1. Patient's name
 2. Medication name
 3. Consumption details (e.g., with food)
-4. Prescription date (mm/dd/yy format)
-5. Expiration date (mm/dd/yy format)
-6. Interval (how often to take: Daily, x times per day, weekly, biweekly, etc)
+4. Prescription (yyyy-mm-dd) 
+5. Expiration date (yyyy-mm-dd)
+6. Interval (This needs to be a string "x hours" MAKE THE CONVERSION IF NEED TO)
 7. Amount (number of pills, grams, etc.)
 8. Dosage (amount to take each time)
 
