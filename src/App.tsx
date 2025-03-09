@@ -7,8 +7,8 @@ import PatientProfile from "./components/Profile/PatientProfile";
 function App() {
   return (
     <div className="App">
-      {/*<PrescribeMedication/>*/}
-        <PatientProfile/>
+      <PrescribeMedication/>
+      {/*  <PatientProfile/>*/}
       {/*  <PatientList/>*/}
     </div>
   );
