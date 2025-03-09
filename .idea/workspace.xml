@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eeb34a79-f6f3-4e69-be6d-160a3214f3fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Icon/Icons.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SideBar/NavBar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SideBar/NavBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SideBar/SideBarData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Antic-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Domine-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Domine-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Domine-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Domine-SemiBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Gambetta-VariableItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/Gambetta.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fonts/SpaceMono-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/list.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/person.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/setting.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/List/PatientList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/List/PatientList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/List/list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/List/list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;oceane-hays&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KelvinGpd/FollowUp.Admin.git&quot;,
+    &quot;accountId&quot;: &quot;f33d5415-96b1-4cc6-acd9-385cbf386842&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2u3iimz0kjYBU3wwAWCdPrk7PmQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/oceanehays/Documents/Application/FollowUp.Admin/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.build.executor": "Run",
+    "npm.start.executor": "Run",
+    "npm.test.executor": "Run",
+    "ts.external.directory.path": "/Users/oceanehays/Documents/Application/FollowUp.Admin/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/img" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/components/SideBar" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eeb34a79-f6f3-4e69-be6d-160a3214f3fd" name="Changes" comment="" />
+      <created>1741483787271</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741483787271</updated>
+      <workItem from="1741483788854" duration="3935000" />
+      <workItem from="1741503330891" duration="4170000" />
+      <workItem from="1741507539075" duration="7092000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

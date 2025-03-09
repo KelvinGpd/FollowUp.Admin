@@ -1,0 +1,56 @@
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #392f5a;
+    height: 100vh;
+    width: 20%;
+    padding: 20px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-item-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.nav-menu-item:hover {
+    background-color: #DAD4EF;
+}
+
+.nav-icon {
+    height: 20px;
+    width: 20px;
+}
+
+.nav-text {
+    font-family: "Gambetta";
+    font-weight: bold;
+}
+
+.divider {
+    margin: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+

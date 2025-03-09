@@ -50,7 +50,7 @@ const paginationModel = { page: 0, pageSize: 5 };
 export default function DataTable() {
     const { data: users, loading } = useFetchUsers();
     return (
-        <div>
+        <div className={"container"}>
             <header>
                 <h1>Pharmacist admin portal</h1>
             </header>
