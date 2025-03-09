@@ -1,4 +1,4 @@
-const parseGeminiResponse = (response) => {
+export const parseGeminiResponse = (response) => {
   const values = response.split(',');
 
   const parsedResponse = {

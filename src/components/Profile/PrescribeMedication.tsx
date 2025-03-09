@@ -2,6 +2,7 @@ import React, { useState, useEffect, CSSProperties } from 'react';
 import usePrescribeMedication from '../../hooks/usePrescribeMedication';
 import useGemini from '../../hooks/useGemini';
 import parseGeminiResponse from '../../utils/geminiHelpers';
+import CameraSnap from './CameraSnap';
 
 const PrescribeMedication = () => {
     const { prescribeMedication, loading, error } = usePrescribeMedication();
@@ -27,6 +28,7 @@ const PrescribeMedication = () => {
         dosage: 'Dosage',
     };
     const [prompt, setPrompt] = useState('');
+    const [imagePath, setImagePath] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -50,7 +52,40 @@ const PrescribeMedication = () => {
 
     const handlePromptSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        await generateContent(prompt);
+        if (imagePath) {
+            const fullPrompt = `${prompt} ${imagePath}`;
+            await generateContent(fullPrompt);
+        } else {
+            await generateContent(prompt);
+        }
+    };
+
+    const handleImageCapture = async (imagePath: string) => {
+        setImagePath(imagePath);
+
+        const response = await fetch('http://localhost:5000/process-image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ imagePath }),
+        });
+
+        const result = await response.json();
+        console.log("RESULT: ", JSON.stringify(result, null, 2));
+        if (result.text) {
+            const parsedResponse = parseGeminiResponse(result.text);
+            setFormData({
+                patientName: parsedResponse.patientName,
+                medicationName: parsedResponse.medicationName,
+                consumptionDetails: parsedResponse.consumptionDetails,
+                prescriptionDate: parsedResponse.prescriptionDate,
+                expDate: parsedResponse.expDate,
+                interval: parsedResponse.interval,
+                amount: parsedResponse.amount,
+                dosage: parsedResponse.dosage,
+            });
+        }
     };
 
     useEffect(() => {
@@ -72,10 +107,8 @@ const PrescribeMedication = () => {
 
     return (
         <div style={styles.container}>
-            <div>
-
-            </div>
-            <h1 >Prescribe Medication</h1>
+            <CameraSnap onCapture={handleImageCapture} />
+            <h1>Prescribe Medication</h1>
             <form onSubmit={handlePromptSubmit}>
                 <div style={styles.formGroup}>
                     <label htmlFor='prompt' style={styles.label}>Prompt</label>
