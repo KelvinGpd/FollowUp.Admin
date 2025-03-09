@@ -24,10 +24,11 @@ const PatientProfile = () => {
     console.log(medications)
 
     return (
-        <div>
+        <div >
             <div style={styles.headerContainer}>
+
                 <button style={styles.backButton}>Back to patient list</button>
-                <h1 style={{textAlign: 'center'}}>Patient Profile</h1>
+                <h1 style={{textAlign: 'center', fontFamily: "Gambetta"}}>Patient Profile</h1>
                 <p></p>
             </div>
 
@@ -75,6 +76,7 @@ const styles: { [key: string]: CSSProperties } = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        margin : 20,
     },
     container: {
         display: 'flex',

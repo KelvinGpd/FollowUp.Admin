@@ -53,7 +53,7 @@ export default function DataTable() {
     return (
         <div className={"container"}>
             <header>
-                <h1>Pharmacist admin portal</h1>
+                <h1 style={{fontFamily : "Gambetta"}}>Pharmacist admin portal</h1>
             </header>
             <Paper sx={{height: 400, width: '100%'}}>
                 <DataGrid
