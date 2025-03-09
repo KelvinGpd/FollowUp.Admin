@@ -3,25 +3,26 @@ import CreatePatient from './components/Create/CreatePatient';
 import PatientList from './components/List/PatientList';
 import PrescribeMedication from './components/Profile/PrescribeMedication';
 import PatientProfile from "./components/Profile/PatientProfile";
-import {Route, Router, Routes} from "react-router-dom";
+import {Route, BrowserRouter as Router, Routes, Navigate} from "react-router-dom";
 import Navbar from "./components/SideBar/NavBar";
-import {Switch} from "@mui/material";
 
 import './fonts/Gambetta.ttf'
 import './fonts/Domine-SemiBold.ttf'
 
 function App() {
   return (
+    <Router>
       <div className="App">
-          <Navbar />
-          <PatientList />
-          {/*<Routes>*/}
-          {/*    <Route path='/'  element={<App />} />*/}
-          {/*    <Route path='/reports' element={<PatientList />} />*/}
-          {/*    <Route path='/products' element={<CreatePatient />} />*/}
-          {/*    <Route path='/products' element={<PatientProfile />} />*/}
-          {/*</Routes>*/}
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Navigate to="/patients" />} />
+          <Route path="/add-patient" element={<CreatePatient />} />
+          <Route path="/patients" element={<PatientList />} />
+          <Route path="/prescribe-medication" element={<PrescribeMedication />} />
+          <Route path="/patient-profile/:userId" element={<PatientProfile />} />
+        </Routes>
       </div>
+    </Router>
 );
 }
 
