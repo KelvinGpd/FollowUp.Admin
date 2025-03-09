@@ -106,7 +106,7 @@ const PrescribeMedication = () => {
     }, [geminiResponse]);
 
     return (
-        <div className='prescribe-medication'>
+        <div style={styles.container}>
             <CameraSnap onCapture={handleImageCapture} />
             <h1>Prescribe Medication</h1>
             <form onSubmit={handlePromptSubmit}>
@@ -170,7 +170,7 @@ const styles: { [key: string]: CSSProperties } = {
     },
     formGroup: {
         marginBottom: '15px',
-        width: '100%',
+        //width: '100%',
     },
     label: {
         display: 'block',
@@ -188,8 +188,9 @@ const styles: { [key: string]: CSSProperties } = {
         display: 'flex',
         width: '100%',
         padding: '10px',
-        backgroundColor: '#007bff',
+        backgroundColor: '#668586',
         color: 'white',
+        fontSize: '16px',
         border: 'none',
         borderRadius: '4px',
         cursor: 'pointer',

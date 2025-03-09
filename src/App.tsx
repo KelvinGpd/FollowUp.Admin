@@ -22,7 +22,7 @@ function App() {
           {/*    <Route path='/products' element={<PatientProfile />} />*/}
           {/*</Routes>*/}
       </div>
-  );
+);
 }
 
 export default App;

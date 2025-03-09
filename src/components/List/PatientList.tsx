@@ -5,6 +5,7 @@ import useFetchUsers from "../../hooks/useFetchUsers";
 //import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
+import React, {CSSProperties} from "react";
 
 // function createData(
 //     name: string,
@@ -61,15 +62,35 @@ export default function DataTable() {
                     initialState={{pagination: {paginationModel}}}
                     pageSizeOptions={[5, 10]}
                     getRowId={(row) => row.uuid}
-                    //sx={{ border: 0 }}
                 />
             </Paper>
-            <p>
 
-            </p>
+            <div>
+                <button style={styles.button}>New prescription</button>
+            </div>
         </div>
 
     );
+}
+
+const styles: { [key: string]: CSSProperties } = {
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        margin: '20px',
+    },
+
+    button:{
+        backgroundColor: '#668586',
+        padding: '20px',
+        borderRadius: '5px',
+        border: 'none',
+        color: 'white',
+        fontSize: '18px',
+        marginTop: '20px',
+    }
 }
 
 
