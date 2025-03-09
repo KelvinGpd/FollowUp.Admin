@@ -1,52 +1,92 @@
-import React from 'react';
-import useCreateUser from '../../hooks/useCreateUser';
+"use client"
+
+import React from "react"
+import useCreateUser from "../../hooks/useCreateUser"
+import "./create.css"
 
 const CreatePatient = () => {
-    const { createUser, loading, error } = useCreateUser(); 
+    const { createUser, loading, error } = useCreateUser()
     const [formData, setFormData] = React.useState({
-        name: '',
-        branchName: '',
-        branchAddress: '',
-        ailments: '',
-        phoneNumber: '',
-    });
+        name: "",
+        branchName: "",
+        branchAddress: "",
+        ailments: "",
+        phoneNumber: "",
+    })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
+        const { name, value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }))
+    }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
         const user = {
             ...formData,
-        };
-        await createUser(user);
-    };
+        }
+        await createUser(user)
+    }
+
+    const fieldLabels: Record<string, string> = {
+        name: "Nom du patient",
+        branchName: "Nom de la branche",
+        branchAddress: "Adresse de la branche",
+        ailments: "Symptômes",
+        phoneNumber: "Numéro de téléphone",
+    }
 
     return (
-        <div className='create-patient'>
-            <h1>Create Patient</h1>
-            <form onSubmit={handleSubmit}>
-                {Object.keys(formData).map((field, index) => (
-                    <div key={index} className='form-group'>
-                        <label htmlFor={field}>{field}</label>
-                        <input
-                            type='text'
-                            id={field}
-                            name={field}
-                            value={(formData as any)[field]}
-                            onChange={handleChange}
-                        />
-                    </div>
-                ))}
-                <button type='submit' disabled={loading}>
-                    {loading ? 'Creating...' : 'Create'}
-                </button>
-                {error && <p className='error'>{error}</p>}
-            </form>
+        <div className="patient-container">
+            <div className="patient-card">
+                <div className="patient-header">
+                    <h1>Créer un patient</h1>
+                </div>
+                <div className="patient-content">
+                    <form onSubmit={handleSubmit}>
+                        {Object.keys(formData).map((field, index) => (
+                            <div key={index} className="form-group">
+                                <label htmlFor={field}>{fieldLabels[field]}</label>
+                                <input
+                                    type="text"
+                                    id={field}
+                                    name={field}
+                                    value={(formData as any)[field]}
+                                    onChange={handleChange}
+                                    placeholder={`Entrez ${fieldLabels[field].toLowerCase()}`}
+                                />
+                            </div>
+                        ))}
+
+                        <button type="submit" disabled={loading} className="submit-button">
+                            {loading ? "Création en cours..." : "Créer le patient"}
+                        </button>
+
+                        {error && (
+                            <div className="error-message">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                                <p>{error}</p>
+                            </div>
+                        )}
+                    </form>
+                </div>
+            </div>
         </div>
-    );
+    )
 }
 
-export default CreatePatient;
+export default CreatePatient
+
