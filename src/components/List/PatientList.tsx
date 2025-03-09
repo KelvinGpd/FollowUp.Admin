@@ -28,9 +28,9 @@ export default function DataTable() {
         navigate(`/patient-profile/${params.row.uuid}`, { state: { user: selectedUser } });
     }
     return (
-        <div className={"container"}>
+        <div style={styles.container}>
             <header>
-                <h1>Pharmacist admin portal</h1>
+                <h1 style={{fontFamily : "Gambetta"}}>Pharmacist admin portal</h1>
             </header>
             <Paper sx={{height: 400, width: '100%'}}>
                 <DataGrid
@@ -51,7 +51,7 @@ export default function DataTable() {
 const styles: { [key: string]: CSSProperties } = {
     container: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
         margin: '20px',

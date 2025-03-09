@@ -28,7 +28,7 @@ const PatientProfile = () => {
     const { data: medications, loading: loadingMeds } = useFetchMedicationForUser(user.name) || [];
 
     return (
-        <div>
+        <div >
             <div style={styles.headerContainer}>
                 <button style={styles.backButton} onClick={() => navigate('/patients')}>Back to patient list</button>
                 <h1 style={{ textAlign: 'center' }}>Patient Profile</h1>
@@ -77,6 +77,7 @@ const styles: { [key: string]: CSSProperties } = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        margin : 20,
     },
     container: {
         display: 'flex',

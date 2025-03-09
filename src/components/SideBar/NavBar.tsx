@@ -1,41 +1,41 @@
 "use client"
 
 import "./NavBar.css"
-import React from "react";
-import {AddPatientIcon, Settings, ViewPatient} from "../Icon/Icons";
+import { AddPatientIcon, Settings, ViewPatient } from "../Icon/Icons"
+import { Link } from "react-router-dom"
 
-export default function Navbar() {
+export default function Navibar() {
     return (
         <div className="navbar-container">
             <div className="logo-container">
-                <img src={require('./../../img/logo.png')} width={150} height={150}/>
+                <img src={require("./../../img/logo.png")} width={150} height={150} />
             </div>
 
             <nav className="nav-menu">
                 {/* First navigation item */}
                 <div className="nav-item-wrapper">
-                    <a href="/add-patient" className="nav-menu-item">
+                    <Link to="/patient" className="nav-menu-item">
                         <AddPatientIcon />
                         <span className="nav-text">Add New Patient</span>
-                    </a>
+                    </Link>
                     <div className="divider" />
                 </div>
 
                 {/* Second navigation item */}
                 <div className="nav-item-wrapper">
-                    <a href="/patients" className="nav-menu-item">
+                    <Link to="/consult" className="nav-menu-item">
                         <ViewPatient />
                         <span className="nav-text">View Patients</span>
-                    </a>
+                    </Link>
                     <div className="divider" />
                 </div>
 
                 {/* Third navigation item */}
                 <div className="nav-item-wrapper">
-                    <a href="/settings" className="nav-menu-item">
+                    <Link to="/settings" className="nav-menu-item">
                         <Settings />
                         <span className="nav-text">Settings</span>
-                    </a>
+                    </Link>
                 </div>
             </nav>
         </div>

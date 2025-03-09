@@ -4,9 +4,11 @@ import useGemini from '../../hooks/useGemini';
 import parseGeminiResponse from '../../utils/geminiHelpers';
 import CameraSnap from './CameraSnap';
 
+import "./style.css"
+
 const PrescribeMedication = () => {
-    const { prescribeMedication, loading, error } = usePrescribeMedication();
-    const { generateContent, loading: geminiLoading, error: geminiError, response: geminiResponse } = useGemini();
+    const {prescribeMedication, loading, error} = usePrescribeMedication();
+    const {generateContent, loading: geminiLoading, error: geminiError, response: geminiResponse} = useGemini();
     const [formData, setFormData] = useState({
         patientName: '',
         medicationName: '',
@@ -31,7 +33,7 @@ const PrescribeMedication = () => {
     const [imagePath, setImagePath] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
             ...formData,
             [name]: value,
@@ -68,7 +70,7 @@ const PrescribeMedication = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ imagePath }),
+            body: JSON.stringify({imagePath}),
         });
 
         const result = await response.json();
@@ -106,63 +108,74 @@ const PrescribeMedication = () => {
     }, [geminiResponse]);
 
     return (
-        <div style={styles.container}>
-            <CameraSnap onCapture={handleImageCapture} />
-            <h1>Prescribe Medication</h1>
-            <form onSubmit={handlePromptSubmit}>
-                <div style={styles.formGroup}>
-                    <label htmlFor='prompt' style={styles.label}>Prompt</label>
-                    <input
-                        type='text'
-                        id='prompt'
-                        name='prompt'
-                        value={prompt}
-                        onChange={handlePromptChange}
-                        style={styles.input}
-                    />
-                </div>
-                <button type='submit' disabled={geminiLoading} style={geminiLoading ? { ...styles.button, ...styles.buttonDisabled } : styles.button}>
-                    Generate
-                </button>
-                {geminiError && <p style={styles.error}>{geminiError}</p>}
-            </form>
-            <br></br>
-            <br></br>
-            <form onSubmit={handleSubmit}>
-                {Object.keys(formData).map((field, index) => (
-                    <div key={index} style={styles.formGroup}>
-                        <label htmlFor={field} style={styles.label}>{fieldDisplayNames[field]}</label>
+        <div className="prescribe-container">
+            <div className="container">
+                <CameraSnap onCapture={handleImageCapture}/>
+                <h1 className="prescribe-title">Prescribe Medication</h1>
+
+                <form onSubmit={handlePromptSubmit} className="prescribe-form">
+                    <div className="form-group">
+                        <label htmlFor="prompt" className="form-label">
+                            Prompt
+                        </label>
                         <input
-                            type='text'
-                            id={field}
-                            name={field}
-                            value={(formData as any)[field]}
-                            onChange={handleChange}
-                            style={styles.input}
+                            type="text"
+                            id="prompt"
+                            name="prompt"
+                            value={prompt}
+                            onChange={handlePromptChange}
+                            className="form-input"
                         />
                     </div>
-                ))}
-                <button type='submit' disabled={loading} style={loading ? { ...styles.button, ...styles.buttonDisabled } : styles.button}>
-                    {loading ? 'Prescribing...' : 'Prescribe'}
-                </button>
-                {error && <p style={styles.error}>{error}</p>}
-            </form>
+                    <button
+                        type="submit"
+                        disabled={geminiLoading}
+                        className={`form-button ${geminiLoading ? "button-disabled" : ""}`}
+                    >
+                        Generate
+                    </button>
+                    {geminiError && <p className="form-error">{geminiError}</p>}
+                </form>
+
+                <div className="form-divider"></div>
+
+                <form onSubmit={handleSubmit} className="prescribe-form">
+                    {Object.keys(formData).map((field, index) => (
+                        <div key={index} className="form-group">
+                            <label htmlFor={field} className="form-label">
+                                {fieldDisplayNames[field as keyof typeof fieldDisplayNames]}
+                            </label>
+                            <input
+                                type="text"
+                                id={field}
+                                name={field}
+                                value={(formData as any)[field]}
+                                onChange={handleChange}
+                                className="form-input"
+                            />
+                        </div>
+                    ))}
+                    <button type="submit" disabled={loading} className={`form-button ${loading ? "button-disabled" : ""}`}>
+                        {loading ? "Prescribing..." : "Prescribe"}
+                    </button>
+                    {error && <p className="form-error">{error}</p>}
+                </form>
+            </div>
+
         </div>
-    );
+    )
 };
 
 
-const styles: { [key: string]: CSSProperties } = {
+const styless: { [key: string]: CSSProperties } = {
     container: {
-        maxWidth: '600px',
-        margin: '0 auto',
-        padding: '20px',
-        border: '1px solid #ccc',
-        borderRadius: '8px',
-        backgroundColor: '#f9f9f9',
+        margin: 20,
+        width: "80%",
+        padding: 20,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center', // Center children horizontally
+        backgroundColor: 'beige',
     },
     header: {
         textAlign: 'center',
@@ -170,12 +183,16 @@ const styles: { [key: string]: CSSProperties } = {
     },
     formGroup: {
         marginBottom: '15px',
-        //width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: "flex-start",
+        width: '100%',
     },
     label: {
         display: 'block',
         marginBottom: '5px',
         fontWeight: 'bold',
+
     },
     input: {
         width: '100%',
@@ -187,12 +204,12 @@ const styles: { [key: string]: CSSProperties } = {
     button: {
         display: 'flex',
         width: '100%',
-        padding: '10px',
+        padding: '10',
         backgroundColor: '#668586',
         color: 'white',
-        fontSize: '16px',
+        fontSize: 16,
         border: 'none',
-        borderRadius: '4px',
+        borderRadius: 4,
         cursor: 'pointer',
         flexDirection: 'row',
         justifyContent: 'center',

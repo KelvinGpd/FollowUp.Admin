@@ -11,19 +11,18 @@ import './fonts/Domine-SemiBold.ttf'
 
 function App() {
   return (
-    <Router>
       <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Navigate to="/patients" />} />
-          <Route path="/add-patient" element={<CreatePatient />} />
-          <Route path="/patients" element={<PatientList />} />
-          <Route path="/prescribe-medication" element={<PrescribeMedication />} />
-          <Route path="/patient-profile/:userId" element={<PatientProfile />} />
-        </Routes>
+          <Navbar />
+          <PatientList />
+          {/*<Routes>*/}
+          {/*    <Route path='/'  element={<App />} />*/}
+          {/*    <Route path='/reports' element={<PatientList />} />*/}
+          {/*    <Route path='/products' element={<CreatePatient />} />*/}
+          {/*    <Route path='/products' element={<PatientProfile />} />*/}
+          {/*</Routes>*/}
       </div>
-    </Router>
 );
 }
 
-export default App;
+export default App
+
