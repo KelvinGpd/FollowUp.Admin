@@ -23,7 +23,7 @@ export default function Navibar() {
 
                 {/* Second navigation item */}
                 <div className="nav-item-wrapper">
-                    <Link to="/patients" className="nav-menu-item">
+                    <Link to="/consult" className="nav-menu-item">
                         <ViewPatient />
                         <span className="nav-text">View Patients</span>
                     </Link>

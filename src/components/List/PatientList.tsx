@@ -6,6 +6,7 @@ import useFetchUsers from "../../hooks/useFetchUsers";
 import Paper from '@mui/material/Paper';
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
 import React, {CSSProperties} from "react";
+import {Link} from "react-router-dom";
 
 // function createData(
 //     name: string,
@@ -51,7 +52,7 @@ const paginationModel = { page: 0, pageSize: 5 };
 export default function DataTable() {
     const { data: users, loading } = useFetchUsers();
     return (
-        <div className={"container"}>
+        <div style={styles.container}>
             <header>
                 <h1 style={{fontFamily : "Gambetta"}}>Pharmacist admin portal</h1>
             </header>
@@ -65,7 +66,9 @@ export default function DataTable() {
                 />
             </Paper>
 
-            <div>
+            <div onClick={() => (
+                <Link to={"/profile"} />
+            )}>
                 <button style={styles.button}>New prescription</button>
             </div>
         </div>
@@ -76,10 +79,10 @@ export default function DataTable() {
 const styles: { [key: string]: CSSProperties } = {
     container: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        margin: '20px',
+        margin: 20,
     },
 
     button:{
