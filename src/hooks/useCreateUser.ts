@@ -13,9 +13,10 @@ const useCreateUser = () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/users`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: new Headers({
+                    "ngrok-skip-browser-warning": "69420",
+                    "Content-type": "application/json; charset=UTF-8"
+                  }),
                 body: JSON.stringify(user),
             });
 

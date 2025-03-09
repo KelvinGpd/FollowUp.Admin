@@ -2,77 +2,46 @@ import { User } from "../../types/types";
 import ListItem from "./ListItem";
 import './list.css';
 import useFetchUsers from "../../hooks/useFetchUsers";
-//import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
 import React, {CSSProperties} from "react";
-import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// function createData(
-//     name: string,
-//     ailments: string,
-//     prescriptions: string,
-//     phone_number: number,
-// ) {
-//     return { name, ailments, prescriptions, phone_number};
-// }
-//
-// const paginationModel = { page: 0, pageSize: 5 };
-//
-// // Construire les rows à partir de fetchUsers
-//
-// const columns: GridColDef[] = [
-//     { field: 'id', headerName: 'ID', width: 70 },
-//     { field: 'firstName', headerName: 'First name', width: 130 },
-//     { field: 'lastName', headerName: 'Last name', width: 130 },
-//     {
-//         field: 'age',
-//         headerName: 'Age',
-//         type: 'number',
-//         width: 90,
-//     },
-//     {
-//         field: 'fullName',
-//         headerName: 'Full name',
-//         description: 'This column has a value getter and is not sortable.',
-//         sortable: false,
-//         width: 160,
-//         valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-//     },
-// ];
 
 const columns: GridColDef[] = [
     { field: 'name', headerName: 'Full name', minWidth: 100 },
     { field: 'ailments', headerName: 'Ailments', minWidth: 130 },
-    { field: 'prescriptions', headerName: 'Current medications', minWidth: 180 }, // Medication names
+    { field: 'prescriptions', headerName: 'Current medications', minWidth: 180 },
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };
 
 export default function DataTable() {
     const { data: users, loading } = useFetchUsers();
+    const navigate = useNavigate();
+
+    const handleRowClick = (params: any) => {
+        if (!users) return;
+        const selectedUser = users.find((user: User) => user.uuid === params.row.uuid);
+        navigate(`/patient-profile/${params.row.uuid}`, { state: { user: selectedUser } });
+    };
+
     return (
-        <div style={styles.container}>
+        <div className={"container"}>
             <header>
-                <h1 style={{fontFamily : "Gambetta"}}>Pharmacist admin portal</h1>
+                <h1>Pharmacist admin portal</h1>
             </header>
-            <Paper sx={{height: 400, width: '100%'}}>
+            <Paper sx={{ height: 400, width: '100%' }}>
                 <DataGrid
                     rows={users || []}
                     columns={columns}
-                    initialState={{pagination: {paginationModel}}}
+                    initialState={{ pagination: { paginationModel } }}
                     pageSizeOptions={[5, 10]}
                     getRowId={(row) => row.uuid}
+                    onRowClick={handleRowClick}
                 />
             </Paper>
-
-            <div onClick={() => (
-                <Link to={"/profile"} />
-            )}>
-                <button style={styles.button}>New prescription</button>
-            </div>
         </div>
-
     );
 }
 

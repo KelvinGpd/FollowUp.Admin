@@ -1,8 +1,9 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
 import Paper from '@mui/material/Paper';
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
-import useFetchUsers from "../../hooks/useFetchUsers";
 import useFetchMedicationForUser from "../../hooks/useFetchMedication";
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { User } from '../../types/types';
 
 
 const columns: GridColDef[] = [
@@ -16,56 +17,44 @@ const columns: GridColDef[] = [
 const paginationModel = { page: 0, pageSize: 5 };
 
 const PatientProfile = () => {
-    const { data: users, loading } = useFetchUsers() || [];
-    const userName = 'Jane Doe';
-    const currUser = users?.find(user => user.name === userName);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { user } = location.state as { user: User };
 
-    const { data: medications, loading: loadingMeds } = useFetchMedicationForUser(userName) || [];
-    console.log(medications)
+    const { data: medications, loading: loadingMeds } = useFetchMedicationForUser(user.name) || [];
 
     return (
-        <div >
+        <div>
             <div style={styles.headerContainer}>
-
-                <button style={styles.backButton}>Back to patient list</button>
-                <h1 style={{textAlign: 'center', fontFamily: "Gambetta"}}>Patient Profile</h1>
+                <button style={styles.backButton} onClick={() => navigate('/patients')}>Back to patient list</button>
+                <h1 style={{ textAlign: 'center' }}>Patient Profile</h1>
                 <p></p>
             </div>
 
             <div style={styles.container}>
-
                 <div>
                     <div style={styles.patientCardContainer}>
-                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Name:</span> {currUser?.name} <br></br></p>
-                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Ailments:</span> {currUser?.ailments}<br></br></p>
-                        <p style={styles.patientCardItem}> <span style={{fontWeight:'bold'}}>Phone number:</span>{currUser?.phoneNumber}<br></br>
-                        </p>
-                        <p style={styles.patientCardItem}><span
-                            style={{fontWeight: 'bold'}}>Branch name:</span> {currUser?.branchName}<br></br></p>
-                        <p style={styles.patientCardItem}><span style={{fontWeight:'bold'}}>Branch address:</span> {currUser?.branchAddress}<br></br></p>
-
+                        <p style={styles.patientCardItem}><span style={{ fontWeight: 'bold' }}>Name:</span> {user.name} <br /></p>
+                        <p style={styles.patientCardItem}><span style={{ fontWeight: 'bold' }}>Ailments:</span> {user.ailments}<br /></p>
+                        <p style={styles.patientCardItem}><span style={{ fontWeight: 'bold' }}>Phone number:</span>{user.phoneNumber}<br /></p>
+                        <p style={styles.patientCardItem}><span style={{ fontWeight: 'bold' }}>Branch name:</span> {user.branchName}<br /></p>
+                        <p style={styles.patientCardItem}><span style={{ fontWeight: 'bold' }}>Branch address:</span> {user.branchAddress}<br /></p>
                     </div>
                 </div>
 
-                <div style={{marginLeft: 70}}>
-                    <Paper sx={{height: 400, width: '100%'}}>
+                <div style={{ marginLeft: 70 }}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
                         <DataGrid
                             rows={medications || []}
                             columns={columns}
-                            initialState={{pagination: {paginationModel}}}
+                            initialState={{ pagination: { paginationModel } }}
                             pageSizeOptions={[5, 10]}
                             getRowId={(row) => row.uuid}
                         />
                     </Paper>
                 </div>
             </div>
-
-            <div>
-                <button style={styles.button}>New prescription (??)</button>
-            </div>
-
         </div>
-
     );
 }
 

@@ -8,7 +8,13 @@ const useFetchUsers = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/users/all`);
+                const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/users/all`, {
+                    method: 'GET',
+                    headers: new Headers({
+                        "ngrok-skip-browser-warning": "69420",
+                        "Content-type": "application/json; charset=UTF-8"
+                      }),
+                });
                 const result = await response.json();
                 setData(result);
             } catch (error) {

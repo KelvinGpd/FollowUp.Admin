@@ -1,5 +1,5 @@
-import PrescribeMedication from "../components/Profile/PrescribeMedication";
+import CreatePatient from "../components/Create/CreatePatient";
 
 export default function AddPatient() {
-    return <PrescribeMedication />
+    return <CreatePatient />
 }

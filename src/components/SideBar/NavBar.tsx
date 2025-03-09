@@ -1,7 +1,7 @@
 "use client"
 
 import "./NavBar.css"
-import { AddPatientIcon, Settings, ViewPatient } from "../Icon/Icons"
+import { AddPatientIcon, PrescribeIcon, ViewPatient } from "../Icon/Icons"
 import { Link } from "react-router-dom"
 
 export default function Navibar() {
@@ -14,7 +14,7 @@ export default function Navibar() {
             <nav className="nav-menu">
                 {/* First navigation item */}
                 <div className="nav-item-wrapper">
-                    <Link to="/patient" className="nav-menu-item">
+                    <Link to="/create" className="nav-menu-item">
                         <AddPatientIcon />
                         <span className="nav-text">Add New Patient</span>
                     </Link>
@@ -32,9 +32,9 @@ export default function Navibar() {
 
                 {/* Third navigation item */}
                 <div className="nav-item-wrapper">
-                    <Link to="/settings" className="nav-menu-item">
-                        <Settings />
-                        <span className="nav-text">Settings</span>
+                    <Link to="/prescribe" className="nav-menu-item">
+                        <PrescribeIcon />
+                        <span className="nav-text">Prescribe</span>
                     </Link>
                 </div>
             </nav>
