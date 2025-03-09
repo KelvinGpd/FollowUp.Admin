@@ -1,5 +1,5 @@
 Context:
-I will provide a paragraph written by a doctor that contains a prescription for a medication. Please extract the following specific information and return it as a single string with fields separated by commas in the given order:
+I will provide an image of a prescription written by a doctor that contains a prescription for a medication. Please extract the following specific information and return it as a single string with fields separated by commas in the given order:
 
 1. Patient's name
 2. Medication name
@@ -12,4 +12,4 @@ I will provide a paragraph written by a doctor that contains a prescription for 
 
 Make sure to provide these 8 values in this order. If you are unsure about any value, leave it blank and move on to the next. Assume the current year is 2025 if no year is provided.
 
-Here is the paragraph:
+Here is the picture of the prescription:

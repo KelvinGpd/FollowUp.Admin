@@ -5,7 +5,7 @@ const usePrescribeMedication = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const prescribeMedication = async (medication: Omit<Medication, 'uuid' | 'lastTakenDate'>) => {
+    const prescribeMedication = async (medication: Omit<Medication, 'uuid' | 'hasTaken'>) => {
         setLoading(true);
         setError(null);
 

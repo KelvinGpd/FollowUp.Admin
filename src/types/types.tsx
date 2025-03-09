@@ -17,5 +17,5 @@ export interface Medication {
     interval: string;
     amount: string;
     dosage: string;
-    lastTakenDate: string;
+    hasTaken: boolean;
 }
