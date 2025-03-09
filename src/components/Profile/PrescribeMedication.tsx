@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import usePrescribeMedication from '../../hooks/usePrescribeMedication';
 import useGemini from '../../hooks/useGemini';
 import parseGeminiResponse from '../../utils/geminiHelpers';
@@ -17,6 +17,16 @@ const PrescribeMedication = () => {
         amount: '',
         dosage: ''
     });
+    const fieldDisplayNames: { [key: string]: string } = {
+        patientName: 'Patient Name',
+        medicationName: 'Medication Name',
+        consumptionDetails: 'Consumption Details',
+        prescriptionDate: 'Prescription Date',
+        expDate: 'Expiration Date',
+        interval: 'Interval',
+        amount: 'Amount',
+        dosage: 'Dosage',
+    };
     const [prompt, setPrompt] = useState('');
     const [imagePath, setImagePath] = useState<string | null>(null);
 
@@ -100,41 +110,99 @@ const PrescribeMedication = () => {
             <CameraSnap onCapture={handleImageCapture} />
             <h1>Prescribe Medication</h1>
             <form onSubmit={handlePromptSubmit}>
-                <div className='form-group'>
-                    <label htmlFor='prompt'>Prompt</label>
+                <div style={styles.formGroup}>
+                    <label htmlFor='prompt' style={styles.label}>Prompt</label>
                     <input
                         type='text'
                         id='prompt'
                         name='prompt'
                         value={prompt}
                         onChange={handlePromptChange}
+                        style={styles.input}
                     />
                 </div>
-                <button type='submit' disabled={geminiLoading}>
+                <button type='submit' disabled={geminiLoading} style={geminiLoading ? { ...styles.button, ...styles.buttonDisabled } : styles.button}>
                     Generate
                 </button>
-                {geminiError && <p className='error'>{geminiError}</p>}
+                {geminiError && <p style={styles.error}>{geminiError}</p>}
             </form>
+            <br></br>
+            <br></br>
             <form onSubmit={handleSubmit}>
                 {Object.keys(formData).map((field, index) => (
-                    <div key={index} className='form-group'>
-                        <label htmlFor={field}>{field}</label>
+                    <div key={index} style={styles.formGroup}>
+                        <label htmlFor={field} style={styles.label}>{fieldDisplayNames[field]}</label>
                         <input
                             type='text'
                             id={field}
                             name={field}
                             value={(formData as any)[field]}
                             onChange={handleChange}
+                            style={styles.input}
                         />
                     </div>
                 ))}
-                <button type='submit' disabled={loading}>
+                <button type='submit' disabled={loading} style={loading ? { ...styles.button, ...styles.buttonDisabled } : styles.button}>
                     {loading ? 'Prescribing...' : 'Prescribe'}
                 </button>
-                {error && <p className='error'>{error}</p>}
+                {error && <p style={styles.error}>{error}</p>}
             </form>
         </div>
     );
 };
+
+
+const styles: { [key: string]: CSSProperties } = {
+    container: {
+        maxWidth: '600px',
+        margin: '0 auto',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        backgroundColor: '#f9f9f9',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center', // Center children horizontally
+    },
+    header: {
+        textAlign: 'center',
+        marginBottom: '20px',
+    },
+    formGroup: {
+        marginBottom: '15px',
+        width: '100%',
+    },
+    label: {
+        display: 'block',
+        marginBottom: '5px',
+        fontWeight: 'bold',
+    },
+    input: {
+        width: '100%',
+        padding: '8px',
+        boxSizing: 'border-box',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+    },
+    button: {
+        display: 'flex',
+        width: '100%',
+        padding: '10px',
+        backgroundColor: '#007bff',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    buttonDisabled: {
+        backgroundColor: '#ccc',
+    },
+    error: {
+        color: 'red',
+        marginTop: '10px',
+    },
+}
 
 export default PrescribeMedication;
