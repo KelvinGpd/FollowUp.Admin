@@ -72,6 +72,9 @@ const PrescribeMedication = () => {
 
     return (
         <div style={styles.container}>
+            <div>
+
+            </div>
             <h1 >Prescribe Medication</h1>
             <form onSubmit={handlePromptSubmit}>
                 <div style={styles.formGroup}>
@@ -134,7 +137,7 @@ const styles: { [key: string]: CSSProperties } = {
     },
     formGroup: {
         marginBottom: '15px',
-        width: '100%',
+        //width: '100%',
     },
     label: {
         display: 'block',
@@ -152,8 +155,9 @@ const styles: { [key: string]: CSSProperties } = {
         display: 'flex',
         width: '100%',
         padding: '10px',
-        backgroundColor: '#007bff',
+        backgroundColor: '#668586',
         color: 'white',
+        fontSize: '16px',
         border: 'none',
         borderRadius: '4px',
         cursor: 'pointer',

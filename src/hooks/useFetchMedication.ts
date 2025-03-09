@@ -8,7 +8,7 @@ const useFetchMedicationForUser = (user : string) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/medications/all`);
+                const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/data/prescriptions?name=${user}`);
                 const result = await response.json();
                 setData(result);
             } catch (error) {
@@ -21,8 +21,7 @@ const useFetchMedicationForUser = (user : string) => {
         fetchData();
     }, []);
 
-    const filtered = data?.filter(medication => medication.patientName === user);
-    return { data: filtered, loading };
+    return { data, loading };
 };
 
 export default useFetchMedicationForUser;
