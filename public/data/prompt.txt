@@ -11,5 +11,11 @@ I will provide an text of a prescription written by a doctor that contains a pre
 8. Dosage (amount to take each time)
 
 Make sure to provide these 8 values in this order. If you are unsure about any value, leave it blank and move on to the next. Assume the current year is 2025 if no year is provided.
+Always give me everything in english.
+For the dates separate them by hyphens! eg 2003-05-06 do NOT use "/"
+
+careful, sometimes the dates are inversed. The prescription date is Always
+before the expiration date. so for example if there are 2 dates and arent specified
+which are which, put the earlier one to prescription date and the other as expiration.
 
 Here is the paragraph:

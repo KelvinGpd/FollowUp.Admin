@@ -23,10 +23,14 @@ const PatientProfile = () => {
 
     const { data: medications, loading: loadingMeds } = useFetchMedicationForUser(user.name) || [];
 
+    const getRowClassName = (params: any) => {
+        return params.row.hasTaken ? '' : 'red-background';
+    };
+
     return (
         <div>
             <div style={styles.headerContainer}>
-                <h1 style={{ alignItems: 'center', fontFamily: 'Gambetta' }}>Patient Profile</h1>
+                <h1 style={{ textAlign: 'center' }}>Patient Profile</h1>
                 <p></p>
             </div>
 
@@ -49,6 +53,7 @@ const PatientProfile = () => {
                             initialState={{ pagination: { paginationModel } }}
                             pageSizeOptions={[5, 10]}
                             getRowId={(row) => row.uuid}
+                            getRowClassName={getRowClassName}
                         />
                     </Paper>
                 </div>
@@ -61,8 +66,10 @@ const styles: { [key: string]: CSSProperties } = {
     headerContainer:{
         width: '100%',
         display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         margin : 20,
-        justifyContent: 'center',
     },
     container: {
         display: 'flex',

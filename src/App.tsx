@@ -20,7 +20,7 @@ function App() {
                     <Route path="profile" element={<Profile />} />
                     <Route path="prescribe" element={<PrescribeMed />} />
                     <Route path="create" element={<AddPatient />} />
-                    <Route path="patient-profile/:userId" element={<PatientProfile />} />
+                    <Route path="profile/:userId" element={<PatientProfile />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>

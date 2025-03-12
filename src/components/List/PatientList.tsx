@@ -23,6 +23,7 @@ export default function DataTable() {
     const handleRowClick = (params: any) => {
         if (!users) return;
         const selectedUser = users.find((user: User) => user.uuid === params.row.uuid);
+        console.log(selectedUser);
         navigate(`/profile/${params.row.uuid}`, { state: { user: selectedUser } });
     };
 
